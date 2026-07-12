@@ -1,0 +1,170 @@
+=== MIGRATIONS === 
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Aucune connexion nâ€™a pu Ãªtre Ã©tablie car lâ€™ordinateur cible lâ€™a expressÃ©ment refusÃ©e (Connection: mysql, Host: 127.0.0.1, Port: 3306, Database: gestion_institutions_religieuses, SQL: select exists (select 1 from information_schema.tables where table_schema = schema() and table_name = 'migrations' and table_type in ('BASE TABLE', 'SYSTEM VERSIONED')) as `exists`)
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:838
+    834â–•             $exceptionType = $this->isUniqueConstraintError($e)
+    835â–•                 ? UniqueConstraintViolationException::class
+    836â–•                 : QueryException::class;
+    837â–• 
+  âžœ 838â–•             throw new $exceptionType(
+    839â–•                 $this->getNameWithReadWriteType(),
+    840â–•                 $query,
+    841â–•                 $this->prepareBindings($bindings),
+    842â–•                 $e,
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connectors\Connector.php:66
+      PDOException::("SQLSTATE[HY000] [2002] Aucune connexion nâ€™a pu Ãªtre Ã©tablie car lâ€™ordinateur cible lâ€™a expressÃ©ment refusÃ©e")
+
+  2   vendor\laravel\framework\src\Illuminate\Database\Connectors\Connector.php:66
+      PDO::__construct("mysql:host=127.0.0.1;port=3306;dbname=gestion_institutions_religieuses", "root", Object(SensitiveParameterValue), [])
+
+=== ROUTES === 
+
+  GET|HEAD  / ............................................................................ home â€º HomeController@index
+  GET|HEAD  admin/dashboard ........................................ admin.dashboard â€º Admin\DashboardController@index
+  GET|HEAD  admin/users ............................................... admin.users.index â€º Admin\UserController@index
+  PUT       admin/users/{user} ...................................... admin.users.update â€º Admin\UserController@update
+  GET|HEAD  admin/users/{user}/edit ..................................... admin.users.edit â€º Admin\UserController@edit
+  POST      deces ................................................................ deces.store â€º DecesController@store
+  GET|HEAD  deces/create ....................................................... deces.create â€º DecesController@create
+  GET|HEAD  login ......................................................... login â€º Auth\LoginController@showLoginForm
+  POST      login ......................................................................... Auth\LoginController@login
+  POST      logout ............................................................. logout â€º Auth\LogoutController@logout
+  POST      mariages ........................................................ mariages.store â€º MariageController@store
+  GET|HEAD  mariages/create ............................................... mariages.create â€º MariageController@create
+  POST      naissances .................................................. naissances.store â€º NaissanceController@store
+  GET|HEAD  naissances/create ......................................... naissances.create â€º NaissanceController@create
+  GET|HEAD  register ............................................. register â€º Auth\RegisterController@showRegisterForm
+  POST      register ................................................................ Auth\RegisterController@register
+  GET|HEAD  responsable/dashboard ............................ responsable.dashboard â€º ResponsableController@dashboard
+  GET|HEAD  storage/{path} storage.local â€º vendor/laravel/framework/src/Illuminate/Filesystem/FilesystemServiceProvidâ€¦
+  PUT       storage/{path} storage.local.upload â€º vendor/laravel/framework/src/Illuminate/Filesystem/FilesystemServicâ€¦
+  GET|HEAD  up ........... vendor/laravel/framework/src/Illuminate/Foundation/Configuration/ApplicationBuilder.php:219
+
+                                                                                                   Showing [20] routes
+
+=== CONTROLLERS === 
+ Le volume dans le lecteur C n'a pas de nom.
+ Le num‚ro de s‚rie du volume est 6CFA-1513
+
+ R‚pertoire de C:\Users\Ismaila\gestion-institutions-religieuses\app\Http\Controllers
+
+02/06/2026  05:42    <DIR>          .
+31/05/2026  23:56    <DIR>          ..
+02/06/2026  08:12    <DIR>          Admin
+31/05/2026  23:09    <DIR>          Auth
+14/03/2026  16:54                77 Controller.php
+31/05/2026  23:09               736 DecesController.php
+31/05/2026  23:09               257 HomeController.php
+31/05/2026  23:09               882 MariageController.php
+31/05/2026  23:09               827 NaissanceController.php
+02/06/2026  05:42             1ÿ045 ResponsableController.php
+               6 fichier(s)            3ÿ824 octets
+               4 R‚p(s)  637ÿ334ÿ331ÿ392 octets libres
+=== MODELS === 
+ Le volume dans le lecteur C n'a pas de nom.
+ Le num‚ro de s‚rie du volume est 6CFA-1513
+
+ R‚pertoire de C:\Users\Ismaila\gestion-institutions-religieuses\app\Models
+
+31/05/2026  22:58    <DIR>          .
+14/03/2026  16:54    <DIR>          ..
+31/05/2026  22:58               238 Deces.php
+04/06/2026  02:46               340 Institution.php
+31/05/2026  22:58               305 Mariage.php
+31/05/2026  22:58               269 Naissance.php
+31/05/2026  22:58               349 Notification.php
+02/06/2026  04:53             1ÿ011 User.php
+               6 fichier(s)            2ÿ512 octets
+               2 R‚p(s)  637ÿ334ÿ331ÿ392 octets libres
+=== VIEWS === 
+ Le volume dans le lecteur C n'a pas de nom.
+ Le num‚ro de s‚rie du volume est 6CFA-1513
+
+ R‚pertoire de C:\Users\Ismaila\gestion-institutions-religieuses\resources\views
+
+02/06/2026  05:30    <DIR>          .
+14/03/2026  16:54    <DIR>          ..
+02/06/2026  08:18    <DIR>          admin
+31/05/2026  23:18    <DIR>          auth
+31/05/2026  23:18    <DIR>          deces
+31/05/2026  23:18    <DIR>          home
+31/05/2026  23:18    <DIR>          layouts
+31/05/2026  23:18    <DIR>          mariages
+31/05/2026  23:18    <DIR>          naissances
+02/06/2026  05:42    <DIR>          responsable
+14/03/2026  16:54            82ÿ568 welcome.blade.php
+               1 fichier(s)           82ÿ568 octets
+
+ R‚pertoire de C:\Users\Ismaila\gestion-institutions-religieuses\resources\views\admin
+
+02/06/2026  08:18    <DIR>          .
+02/06/2026  05:30    <DIR>          ..
+02/06/2026  08:33             5ÿ502 dashboard.blade.php
+02/06/2026  08:23    <DIR>          users
+               1 fichier(s)            5ÿ502 octets
+
+ R‚pertoire de C:\Users\Ismaila\gestion-institutions-religieuses\resources\views\admin\users
+
+02/06/2026  08:23    <DIR>          .
+02/06/2026  08:18    <DIR>          ..
+02/06/2026  08:23             3ÿ786 edit.blade.php
+02/06/2026  08:23             1ÿ852 index.blade.php
+               2 fichier(s)            5ÿ638 octets
+
+ R‚pertoire de C:\Users\Ismaila\gestion-institutions-religieuses\resources\views\auth
+
+31/05/2026  23:18    <DIR>          .
+02/06/2026  05:30    <DIR>          ..
+31/05/2026  23:18             2ÿ108 login.blade.php
+02/06/2026  07:53             3ÿ514 register.blade.php
+               2 fichier(s)            5ÿ622 octets
+
+ R‚pertoire de C:\Users\Ismaila\gestion-institutions-religieuses\resources\views\deces
+
+31/05/2026  23:18    <DIR>          .
+02/06/2026  05:30    <DIR>          ..
+31/05/2026  23:18             3ÿ150 create.blade.php
+               1 fichier(s)            3ÿ150 octets
+
+ R‚pertoire de C:\Users\Ismaila\gestion-institutions-religieuses\resources\views\home
+
+31/05/2026  23:18    <DIR>          .
+02/06/2026  05:30    <DIR>          ..
+02/06/2026  03:42             4ÿ100 index.blade.php
+               1 fichier(s)            4ÿ100 octets
+
+ R‚pertoire de C:\Users\Ismaila\gestion-institutions-religieuses\resources\views\layouts
+
+31/05/2026  23:18    <DIR>          .
+02/06/2026  05:30    <DIR>          ..
+02/06/2026  06:33             5ÿ067 app.blade.php
+               1 fichier(s)            5ÿ067 octets
+
+ R‚pertoire de C:\Users\Ismaila\gestion-institutions-religieuses\resources\views\mariages
+
+31/05/2026  23:18    <DIR>          .
+02/06/2026  05:30    <DIR>          ..
+31/05/2026  23:18             4ÿ339 create.blade.php
+               1 fichier(s)            4ÿ339 octets
+
+ R‚pertoire de C:\Users\Ismaila\gestion-institutions-religieuses\resources\views\naissances
+
+31/05/2026  23:18    <DIR>          .
+02/06/2026  05:30    <DIR>          ..
+31/05/2026  23:18             3ÿ662 create.blade.php
+               1 fichier(s)            3ÿ662 octets
+
+ R‚pertoire de C:\Users\Ismaila\gestion-institutions-religieuses\resources\views\responsable
+
+02/06/2026  05:42    <DIR>          .
+02/06/2026  05:30    <DIR>          ..
+02/06/2026  05:42             4ÿ896 dashboard.blade.php
+               1 fichier(s)            4ÿ896 octets
+
+     Total des fichiers list‚sÿ:
+              12 fichier(s)          124ÿ544 octets
+              29 R‚p(s)  637ÿ334ÿ323ÿ200 octets libres
