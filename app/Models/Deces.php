@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Model;
 
 class Deces extends Model
@@ -12,5 +10,9 @@ class Deces extends Model
         'date_deces',
         'lieu',
         'cause',
+    ];
+
+    protected $casts = [
+        'date_deces' => 'date',
     ];
 }

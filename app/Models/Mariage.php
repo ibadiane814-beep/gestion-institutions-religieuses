@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Model;
 
 class Mariage extends Model
@@ -14,5 +12,9 @@ class Mariage extends Model
         'date_mariage',
         'lieu',
         'officiant',
+    ];
+
+    protected $casts = [
+        'date_mariage' => 'date',
     ];
 }
