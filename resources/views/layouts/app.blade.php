@@ -406,6 +406,21 @@
 
                 <ul class="navbar-nav align-items-center gap-2">
                     <li class="nav-item">
+                 <form action="{{ route('recherche') }}" method="GET" class="d-flex">
+        <div class="input-group" style="max-width:250px;">
+            <input type="text" name="q" class="form-control form-control-sm"
+                placeholder="Rechercher..."
+                style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:#fff; border-radius:8px 0 0 8px;"
+                value="{{ request('q') }}">
+            <button type="submit" class="btn btn-sm"
+                style="background:rgba(37,99,235,0.6); border:none; color:#fff; border-radius:0 8px 8px 0;">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+    </form>
+</li>
+                    
+                    <li class="nav-item">
                         <button onclick="toggleTheme()" id="themeBtn" class="btn btn-nav-login">
                             <i id="themeIcon" class="bi bi-moon-fill"></i>
                         </button>
@@ -475,11 +490,77 @@
     </main>
 
     {{-- FOOTER --}}
-    <footer>
-        <p class="mb-0">
-            &copy; {{ date('Y') }} — <span>Gestion des Institutions Religieuses de Dakar</span>
-            &nbsp;·&nbsp; Développé par <span>ISI Dakar</span>
-        </p>
+   <footer style="background: linear-gradient(135deg, #0f172a, #1e293b); color: rgba(255,255,255,0.7); margin-top: auto;">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div style="display:flex; align-items:center; gap:10px; margin-bottom:1rem;">
+                        <div style="width:40px; height:40px; background:linear-gradient(135deg,#2563eb,#7c3aed); border-radius:10px; display:flex; align-items:center; justify-content:center;">
+                            <i class="bi bi-buildings-fill text-white"></i>
+                        </div>
+                        <span style="color:#fff; font-weight:700; font-size:1.1rem;">Gestion Religieuse</span>
+                    </div>
+                    <p style="font-size:0.85rem; line-height:1.7; color:rgba(255,255,255,0.5);">
+                        Plateforme de recensement et de gestion des institutions religieuses de Dakar. Mariages, décès et naissances en toute simplicité.
+                    </p>
+                    <div style="display:flex; gap:8px; margin-top:1rem;">
+                        <div style="width:36px; height:36px; background:rgba(255,255,255,0.08); border-radius:8px; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+                            <i class="bi bi-geo-alt-fill" style="color:#60a5fa;"></i>
+                        </div>
+                        <div style="width:36px; height:36px; background:rgba(255,255,255,0.08); border-radius:8px; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+                            <i class="bi bi-envelope-fill" style="color:#60a5fa;"></i>
+                        </div>
+                        <div style="width:36px; height:36px; background:rgba(255,255,255,0.08); border-radius:8px; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+                            <i class="bi bi-telephone-fill" style="color:#60a5fa;"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h6 style="color:#fff; font-weight:700; margin-bottom:1rem; font-size:0.9rem; text-transform:uppercase; letter-spacing:0.5px;">Navigation</h6>
+                    <ul style="list-style:none; padding:0; margin:0;">
+                        <li style="margin-bottom:0.5rem;"><a href="{{ route('home') }}" style="color:rgba(255,255,255,0.55); text-decoration:none; font-size:0.85rem; transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'"><i class="bi bi-chevron-right me-1" style="font-size:0.7rem;"></i>Accueil</a></li>
+                        <li style="margin-bottom:0.5rem;"><a href="{{ route('institutions.index') }}" style="color:rgba(255,255,255,0.55); text-decoration:none; font-size:0.85rem;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'"><i class="bi bi-chevron-right me-1" style="font-size:0.7rem;"></i>Institutions</a></li>
+                        @auth
+                        <li style="margin-bottom:0.5rem;"><a href="{{ route('profil.edit') }}" style="color:rgba(255,255,255,0.55); text-decoration:none; font-size:0.85rem;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'"><i class="bi bi-chevron-right me-1" style="font-size:0.7rem;"></i>Mon profil</a></li>
+                        @endauth
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 style="color:#fff; font-weight:700; margin-bottom:1rem; font-size:0.9rem; text-transform:uppercase; letter-spacing:0.5px;">Formulaires</h6>
+                    <ul style="list-style:none; padding:0; margin:0;">
+                        <li style="margin-bottom:0.5rem;"><a href="{{ route('mariages.create') }}" style="color:rgba(255,255,255,0.55); text-decoration:none; font-size:0.85rem;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'"><i class="bi bi-heart-fill me-1" style="color:#e11d48; font-size:0.7rem;"></i>Demande de mariage</a></li>
+                        <li style="margin-bottom:0.5rem;"><a href="{{ route('deces.create') }}" style="color:rgba(255,255,255,0.55); text-decoration:none; font-size:0.85rem;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'"><i class="bi bi-moon-stars-fill me-1" style="color:#0284c7; font-size:0.7rem;"></i>Déclaration de décès</a></li>
+                        <li style="margin-bottom:0.5rem;"><a href="{{ route('naissances.create') }}" style="color:rgba(255,255,255,0.55); text-decoration:none; font-size:0.85rem;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'"><i class="bi bi-stars me-1" style="color:#16a34a; font-size:0.7rem;"></i>Enregistrement naissance</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 style="color:#fff; font-weight:700; margin-bottom:1rem; font-size:0.9rem; text-transform:uppercase; letter-spacing:0.5px;">Informations</h6>
+                    <ul style="list-style:none; padding:0; margin:0;">
+                        <li style="margin-bottom:0.75rem; display:flex; align-items:center; gap:8px;">
+                            <i class="bi bi-geo-alt-fill" style="color:#60a5fa;"></i>
+                            <span style="font-size:0.85rem; color:rgba(255,255,255,0.55);">Dakar, Sénégal</span>
+                        </li>
+                        <li style="margin-bottom:0.75rem; display:flex; align-items:center; gap:8px;">
+                            <i class="bi bi-building" style="color:#60a5fa;"></i>
+                            <span style="font-size:0.85rem; color:rgba(255,255,255,0.55);">Institut Supérieur d'Informatique</span>
+                        </li>
+                        <li style="margin-bottom:0.75rem; display:flex; align-items:center; gap:8px;">
+                            <i class="bi bi-mortarboard-fill" style="color:#60a5fa;"></i>
+                            <span style="font-size:0.85rem; color:rgba(255,255,255,0.55);">Licence Génie Logiciel 2025-2026</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="border-color:rgba(255,255,255,0.08); margin:2rem 0 1.5rem;">
+            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+                <p style="margin:0; font-size:0.82rem; color:rgba(255,255,255,0.4);">
+                    &copy; {{ date('Y') }} — <span style="color:rgba(255,255,255,0.7);">Gestion des Institutions Religieuses de Dakar</span>
+                </p>
+                <p style="margin:0; font-size:0.82rem; color:rgba(255,255,255,0.4);">
+                    Développé par <span style="color:#60a5fa; font-weight:600;">Elhadji Ismaila BADIANE</span> · <span style="color:rgba(255,255,255,0.5);">ISI Dakar</span>
+                </p>
+            </div>
+        </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
