@@ -45,7 +45,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/recherche', [App\Http\Controllers\RechercheController::class, 'index'])->name('recherche');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/users', [AdminUserController::class, 'index'])->name('users.index');
     Route::get('/users/{user}/edit', [AdminUserController::class, 'edit'])->name('users.edit');
@@ -68,8 +67,22 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/naissances/pdf', [\App\Http\Controllers\NaissanceController::class, 'exportPdf'])->name('naissances.pdf');
     Route::get('/naissances/{naissance}/pdf', [\App\Http\Controllers\NaissanceController::class, 'fichePdf'])->name('naissances.fiche-pdf');
     Route::delete('/naissances/{naissance}', [\App\Http\Controllers\NaissanceController::class, 'destroy'])->name('naissances.destroy');
+
+    // Nouveaux utilisateurs
+Route::get('/users/create', [\App\Http\Controllers\Admin\UserController::class, 'create'])->name('users.create');
+Route::post('/users', [\App\Http\Controllers\Admin\UserController::class, 'store'])->name('users.store');
+Route::delete('/users/{user}', [\App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('users.destroy');
+
+// Institutions (admin)
+Route::get('/institutions', [\App\Http\Controllers\Admin\InstitutionAdminController::class, 'index'])->name('institutions.admin.index');
+Route::get('/institutions/create', [\App\Http\Controllers\Admin\InstitutionAdminController::class, 'create'])->name('institutions.create');
+Route::post('/institutions', [\App\Http\Controllers\Admin\InstitutionAdminController::class, 'store'])->name('institutions.store');
+Route::get('/institutions/{institution}/edit', [\App\Http\Controllers\Admin\InstitutionAdminController::class, 'edit'])->name('institutions.edit');
+Route::put('/institutions/{institution}', [\App\Http\Controllers\Admin\InstitutionAdminController::class, 'update'])->name('institutions.update');
+Route::delete('/institutions/{institution}', [\App\Http\Controllers\Admin\InstitutionAdminController::class, 'destroy'])->name('institutions.destroy');
 });
 
 Route::middleware(['auth', 'role:responsable'])->prefix('responsable')->name('responsable.')->group(function () {
     Route::get('/dashboard', [ResponsableController::class, 'dashboard'])->name('dashboard');
 });
+Route::get('/mon-espace', [App\Http\Controllers\UserDashboardController::class, 'index'])->name('user.dashboard');

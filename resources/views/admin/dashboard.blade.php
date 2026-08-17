@@ -201,34 +201,44 @@
     <div class="col-12">
         <p class="section-title mt-2"><i class="bi bi-lightning-fill text-warning"></i> Actions rapides</p>
         <div class="row g-2">
-            <div class="col-md-3 col-6">
+            <div class="col-md-2 col-6">
                 <a href="{{ route('mariages.create') }}" class="quick-action">
                     <div class="quick-action-icon" style="background:#fff0f3; color:#e11d48;"><i class="bi bi-heart-fill"></i></div>
                     <div><div style="font-weight:600; font-size:0.875rem;">Nouveau mariage</div><div style="font-size:0.75rem; color:#94a3b8;">Enregistrer</div></div>
                     <i class="bi bi-chevron-right ms-auto text-muted"></i>
                 </a>
             </div>
-            <div class="col-md-3 col-6">
+            <div class="col-md-2 col-6">
                 <a href="{{ route('deces.create') }}" class="quick-action">
                     <div class="quick-action-icon" style="background:#f0f9ff; color:#0284c7;"><i class="bi bi-moon-stars-fill"></i></div>
                     <div><div style="font-weight:600; font-size:0.875rem;">Nouveau décès</div><div style="font-size:0.75rem; color:#94a3b8;">Déclarer</div></div>
                     <i class="bi bi-chevron-right ms-auto text-muted"></i>
                 </a>
             </div>
-            <div class="col-md-3 col-6">
+            <div class="col-md-2 col-6">
                 <a href="{{ route('naissances.create') }}" class="quick-action">
                     <div class="quick-action-icon" style="background:#fefce8; color:#ca8a04;"><i class="bi bi-stars"></i></div>
                     <div><div style="font-weight:600; font-size:0.875rem;">Nouvelle naissance</div><div style="font-size:0.75rem; color:#94a3b8;">Enregistrer</div></div>
                     <i class="bi bi-chevron-right ms-auto text-muted"></i>
                 </a>
             </div>
-            <div class="col-md-3 col-6">
+            <div class="col-md-2 col-6">
                 <a href="{{ route('admin.users.index') }}" class="quick-action">
                     <div class="quick-action-icon" style="background:#eff6ff; color:#2563eb;"><i class="bi bi-people-fill"></i></div>
                     <div><div style="font-weight:600; font-size:0.875rem;">Utilisateurs</div><div style="font-size:0.75rem; color:#94a3b8;">Gérer</div></div>
                     <i class="bi bi-chevron-right ms-auto text-muted"></i>
                 </a>
             </div>
+            <div class="col-md-2 col-6">
+                <a href="{{ route('admin.institutions.admin.index') }}" class="quick-action">
+                    <div class="quick-action-icon" style="background:#f0fdf4; color:#16a34a;"><i class="bi bi-buildings-fill"></i></div>
+                    <div><div style="font-weight:600; font-size:0.875rem;">Institutions</div><div style="font-size:0.75rem; color:#94a3b8;">Gérer</div></div>
+                    <i class="bi bi-chevron-right ms-auto text-muted"></i>
+                </a>
+            </div>
+        </div>
+    
+          
         </div>
     </div>
 </div>

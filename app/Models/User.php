@@ -1,17 +1,9 @@
 <?php
-
 namespace App\Models;
-
-use Database\Factories\UserFactory;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable;
-
     protected $table = 'utilisateurs';
 
     protected $fillable = [
@@ -19,29 +11,28 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
-        'telephone',
-        'adresse',
+        'institution_id',
     ];
 
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $hidden = ['password', 'remember_token'];
 
-    protected function casts(): array
+    public function institution()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->belongsTo(Institution::class);
     }
 
-    public function getRedirectRoute(): string
+    public function isAdmin()
     {
-        return match($this->role) {
-            'admin' => route('admin.dashboard'),
-            'responsable' => route('responsable.dashboard'),
-            default => route('home'),
-        };
+        return $this->role === 'admin';
+    }
+
+    public function isResponsable()
+    {
+        return $this->role === 'responsable';
+    }
+
+    public function isCitoyen()
+    {
+        return $this->role === 'citoyen';
     }
 }

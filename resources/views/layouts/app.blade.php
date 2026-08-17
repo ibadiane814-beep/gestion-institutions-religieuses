@@ -405,20 +405,6 @@
                 </ul>
 
                 <ul class="navbar-nav align-items-center gap-2">
-                    <li class="nav-item">
-                 <form action="{{ route('recherche') }}" method="GET" class="d-flex">
-        <div class="input-group" style="max-width:250px;">
-            <input type="text" name="q" class="form-control form-control-sm"
-                placeholder="Rechercher..."
-                style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:#fff; border-radius:8px 0 0 8px;"
-                value="{{ request('q') }}">
-            <button type="submit" class="btn btn-sm"
-                style="background:rgba(37,99,235,0.6); border:none; color:#fff; border-radius:0 8px 8px 0;">
-                <i class="bi bi-search"></i>
-            </button>
-        </div>
-    </form>
-</li>
                     
                     <li class="nav-item">
                         <button onclick="toggleTheme()" id="themeBtn" class="btn btn-nav-login">
