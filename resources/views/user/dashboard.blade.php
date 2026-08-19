@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="mb-4" style="background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); border-radius: 20px; padding: 2rem 2.5rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+<div class="mb-4" style="background:linear-gradient(135deg,#0f172a,#1e3a5f); border-radius:20px; padding:2rem 2.5rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
     <div>
         <h1 style="color:#fff; font-size:1.7rem; font-weight:800; margin:0;">
             <i class="bi bi-person-circle me-2" style="color:#60a5fa;"></i> Mon Espace
@@ -61,7 +61,7 @@
 </p>
 <div class="row g-3 mb-4">
     <div class="col-md-4">
-        <a href="{{ route('mariages.create') }}" class="card border-0 shadow-sm text-decoration-none" style="border-radius:16px; overflow:hidden; display:block; transition:all 0.2s; border-top:4px solid #e11d48 !important;">
+        <a href="{{ route('mariages.create') }}" class="card border-0 shadow-sm text-decoration-none" style="border-radius:16px; display:block; border-top:4px solid #e11d48 !important;">
             <div class="card-body p-4 text-center">
                 <div style="width:60px; height:60px; background:#fff0f3; border-radius:16px; margin:0 auto 1rem; display:flex; align-items:center; justify-content:center; font-size:1.6rem;">
                     <i class="bi bi-heart-fill" style="color:#e11d48;"></i>
@@ -73,7 +73,7 @@
         </a>
     </div>
     <div class="col-md-4">
-        <a href="{{ route('deces.create') }}" class="card border-0 shadow-sm text-decoration-none" style="border-radius:16px; overflow:hidden; display:block; transition:all 0.2s; border-top:4px solid #0284c7 !important;">
+        <a href="{{ route('deces.create') }}" class="card border-0 shadow-sm text-decoration-none" style="border-radius:16px; display:block; border-top:4px solid #0284c7 !important;">
             <div class="card-body p-4 text-center">
                 <div style="width:60px; height:60px; background:#f0f9ff; border-radius:16px; margin:0 auto 1rem; display:flex; align-items:center; justify-content:center; font-size:1.6rem;">
                     <i class="bi bi-moon-stars-fill" style="color:#0284c7;"></i>
@@ -85,7 +85,7 @@
         </a>
     </div>
     <div class="col-md-4">
-        <a href="{{ route('naissances.create') }}" class="card border-0 shadow-sm text-decoration-none" style="border-radius:16px; overflow:hidden; display:block; transition:all 0.2s; border-top:4px solid #16a34a !important;">
+        <a href="{{ route('naissances.create') }}" class="card border-0 shadow-sm text-decoration-none" style="border-radius:16px; display:block; border-top:4px solid #16a34a !important;">
             <div class="card-body p-4 text-center">
                 <div style="width:60px; height:60px; background:#f0fdf4; border-radius:16px; margin:0 auto 1rem; display:flex; align-items:center; justify-content:center; font-size:1.6rem;">
                     <i class="bi bi-stars" style="color:#16a34a;"></i>
@@ -134,6 +134,54 @@
             @endforelse
         </tbody>
     </table>
+</div>
+{{-- NOTIFICATIONS --}}
+<div class="row g-3 mt-2">
+    <div class="col-12">
+        <p class="section-title"><i class="bi bi-bell-fill text-warning"></i> Dernières notifications</p>
+        <div class="card border-0 shadow-sm" style="border-radius:16px; overflow:hidden;">
+            <table class="table mb-0">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Message</th>
+                        <th>Date</th>
+                        <th>Statut</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse(\App\Models\Notification::latest()->take(10)->get() as $notif)
+                    <tr style="{{ !$notif->lu ? 'background:#fffbeb;' : '' }}">
+                        <td>
+                            @if($notif->type === 'mariage')
+                                <span class="badge" style="background:#fff0f3; color:#e11d48;">❤️ Mariage</span>
+                            @elseif($notif->type === 'deces')
+                                <span class="badge" style="background:#f0f9ff; color:#0284c7;">🌙 Décès</span>
+                            @else
+                                <span class="badge" style="background:#fefce8; color:#ca8a04;">⭐ Naissance</span>
+                            @endif
+                        </td>
+                        <td>{{ $notif->message }}</td>
+                        <td style="font-size:0.82rem; color:#94a3b8;">{{ $notif->created_at->format('d/m/Y H:i') }}</td>
+                        <td>
+                            @if(!$notif->lu)
+                                <span class="badge" style="background:#fef3c7; color:#d97706;">Non lu</span>
+                            @else
+                                <span class="badge" style="background:#f1f5f9; color:#94a3b8;">Lu</span>
+                            @endif
+                        </td>
+                    </tr>
+                    @empty
+                    <tr>
+                        <td colspan="4" class="text-center py-4 text-muted">
+                            <i class="bi bi-bell-slash d-block mb-1 fs-4"></i> Aucune notification
+                        </td>
+                    </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 @endsection

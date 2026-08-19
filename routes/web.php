@@ -42,6 +42,7 @@ Route::middleware('auth')->group(function () {
     // Naissances
     Route::get('/naissances/create', [NaissanceController::class, 'create'])->name('naissances.create');
     Route::post('/naissances', [NaissanceController::class, 'store'])->name('naissances.store');
+    Route::get('/mon-espace', [App\Http\Controllers\UserDashboardController::class, 'index'])->name('user.dashboard');
 });
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {

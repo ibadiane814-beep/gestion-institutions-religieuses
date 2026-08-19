@@ -55,9 +55,24 @@ class MariageController extends Controller
         ], [
             'date_mariage.before_or_equal' => 'La date du mariage ne peut pas être dans le futur.',
         ]);
+        $mariage = Mariage::create($data);
 
-        Mariage::create($data);
+        // Notification automatique
+        \App\Models\Notification::create([
+            'titre'   => 'Nouveau mariage enregistré',
+            'message' => $mariage->conjoint1_prenom . ' ' . $mariage->conjoint1_nom . ' & ' . $mariage->conjoint2_prenom . ' ' . $mariage->conjoint2_nom . ' — ' . $mariage->date_mariage->format('d/m/Y'),
+            'type'    => 'mariage',
+            'lu'      => false,
+        ]);
+
         return redirect()->route('mariages.create')
             ->with('success', 'Demande de mariage enregistrée avec succès.');
     }
 }
+        // Email de confirmation
+        try {
+            \Illuminate\Support\Facades\Mail::to(auth()->user()->email)
+                ->send(new \App\Mail\MariageConfirmation($mariage));
+        } catch (\Exception $e) {
+            // Email non bloquant
+        }

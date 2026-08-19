@@ -43,7 +43,15 @@ class NaissanceController extends Controller
             'date_naissance.before_or_equal' => 'La date de naissance ne peut pas être dans le futur.',
         ]);
 
-        Naissance::create($data);
+        $naissance = Naissance::create($data);
+
+        \App\Models\Notification::create([
+            'titre'   => 'Nouvelle naissance enregistrée',
+            'message' => $naissance->enfant_prenom . ' ' . $naissance->enfant_nom . ' — ' . $naissance->date_naissance->format('d/m/Y'),
+            'type'    => 'naissance',
+            'lu'      => false,
+        ]);
+
         return redirect()->route('naissances.create')
             ->with('success', 'Enregistrement de naissance effectué avec succès.');
     }

@@ -32,6 +32,7 @@ class RegisterController extends Controller
             'telephone' => $data['telephone'],
             'adresse' => $data['adresse'],
             'role' => 'citoyen',
+            
         ]);
 
         Auth::login($user);
@@ -40,3 +41,9 @@ class RegisterController extends Controller
         return redirect($user->getRedirectRoute());
     }
 }
+        try {
+            \Illuminate\Support\Facades\Mail::to($user->email)
+                ->send(new \App\Mail\BienvenueMail($user));
+        } catch (\Exception $e) {
+            // Email non bloquant
+        }
