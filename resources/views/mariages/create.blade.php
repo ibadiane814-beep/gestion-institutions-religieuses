@@ -110,6 +110,14 @@
                         <button type="submit" class="btn btn-primary px-4 flex-fill">
                             <i class="bi bi-check-circle me-2"></i> Soumettre la demande
                         </button>
+                                                <div class="col-md-12">
+                            <label class="form-label">Email de confirmation <span style="color:#94a3b8; font-weight:400;">(optionnel)</span></label>
+                            <input type="email" class="form-control"
+                                name="email_confirmation"
+                                placeholder="Entrez un email pour recevoir la confirmation"
+                                value="{{ old('email_confirmation') }}">
+                            <small class="text-muted">Si renseigné, une confirmation sera envoyée à cet email.</small>
+                        </div>
                     </div>
                 </form>
             </div>

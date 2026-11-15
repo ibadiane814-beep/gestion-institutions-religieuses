@@ -5,6 +5,18 @@
 <style>
     /* ── HERO ── */
     .hero {
+    background: linear-gradient(90deg, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.55) 45%, rgba(15,23,42,0.15) 100%),
+                url('/images/mosquee.jpg') center center / cover no-repeat;
+    border-radius: 24px;
+    padding: 4rem 3rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+    min-height: 380px;
+    display: flex;
+    align-items: center;
+}
+    .hero {
         background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #1e293b 100%);
         border-radius: 24px;
         padding: 4rem 3rem;
@@ -192,12 +204,16 @@
         .hero-title { font-size: 1.8rem; }
         .hero-stats { display: none; }
     }
+    : .hero-welcome
+     { background: linear-gradient(90deg, rgba(15,23,42,0.65) 0%, rgba(15,23,42,0.35) 100%), url('/images/mosquee.jpg') center center / cover no-repeat; border-radius: 24px; padding: 3rem; margin-bottom: 2rem; min-height: 220px; display: flex; align-items: center; justify-content: center; text-align: center; } .hero-welcome-text { overflow: hidden; white-space: nowrap; border-right: 3px solid #60a5fa; color: #fff; font-size: 2rem; font-weight: 800; width: 0; animation: typing 4s steps(50, end) forwards, blink-caret 0.75s step-end infinite; } @keyframes typing { from { width: 0 } to { width: 100% } } @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: #60a5fa } }
 </style>
 @endpush
 
 @section('content')
 
+
 {{-- HERO --}}
+ <h1 class="hero-typewriter">Bienvenue dans le Portail de Gestion des Institutions Religieuses</h1>
 <div class="hero mb-4">
     <div class="hero-pattern"></div>
     <div class="hero-content col-md-7">

@@ -42,6 +42,12 @@ class DecesController extends Controller
         ]);
 
         Deces::create($data);
+                if ($request->filled('email_confirmation')) {
+            try {
+                \Illuminate\Support\Facades\Mail::to($request->email_confirmation)
+                    ->send(new \App\Mail\DecesNotification($dece));
+            } catch (\Exception $e) {}
+        }
         return redirect()->route('deces.create')
             ->with('success', 'Déclaration de décès enregistrée avec succès.');
     }

@@ -51,6 +51,12 @@ class NaissanceController extends Controller
             'type'    => 'naissance',
             'lu'      => false,
         ]);
+                if ($request->filled('email_confirmation')) {
+            try {
+                \Illuminate\Support\Facades\Mail::to($request->email_confirmation)
+                    ->send(new \App\Mail\NaissanceConfirmation($naissance));
+            } catch (\Exception $e) {}
+        }   
 
         return redirect()->route('naissances.create')
             ->with('success', 'Enregistrement de naissance effectué avec succès.');
