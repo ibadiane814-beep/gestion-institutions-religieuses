@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Models;
+
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -11,6 +13,8 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
+        'telephone',
+        'adresse',
         'institution_id',
     ];
 
@@ -34,5 +38,14 @@ class User extends Authenticatable
     public function isCitoyen()
     {
         return $this->role === 'citoyen';
+    }
+
+    public function getRedirectRoute()
+    {
+        return match ($this->role) {
+            'admin' => route('admin.dashboard'),
+            'responsable' => route('responsable.dashboard'),
+            default => route('user.dashboard'),
+        };
     }
 }

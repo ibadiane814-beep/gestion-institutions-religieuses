@@ -43,7 +43,7 @@ class MariageController extends Controller
         // Notification automatique
         \App\Models\Notification::create([
             'titre'   => 'Nouveau mariage enregistré',
-            'message' => $mariage->conjoint1_prenom . ' ' . $mariage->conjoint1_nom . ' & ' . $mariage->conjoint2_prenom . ' ' . $mariage->conjoint2_nom . ' — ' . $mariage->date_mariage->format('d/m/Y'),
+            'message' => $mariage->conjoint1_prenom . ' ' . $mariage->conjoint1_nom . ' & ' . $mariage->conjoint2_prenom . ' ' . $mariage->conjoint2_nom . ' — ' .\Carbon\Carbon::parse($mariage->date_mariage)->format('d/m/Y'),
             'type'    => 'mariage',
             'lu'      => false,
         ]);

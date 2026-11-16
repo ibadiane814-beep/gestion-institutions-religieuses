@@ -86,4 +86,3 @@ Route::delete('/institutions/{institution}', [\App\Http\Controllers\Admin\Instit
 Route::middleware(['auth', 'role:responsable'])->prefix('responsable')->name('responsable.')->group(function () {
     Route::get('/dashboard', [ResponsableController::class, 'dashboard'])->name('dashboard');
 });
-Route::get('/mon-espace', [App\Http\Controllers\UserDashboardController::class, 'index'])->name('user.dashboard');
