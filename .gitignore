@@ -24,5 +24,6 @@ Homestead.yaml
 Thumbs.db
 backup_bdd.sql
 backup_bdd_*.sql    
+*.sql
 
 
