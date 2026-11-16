@@ -65,20 +65,29 @@
                     <div class="bg-light rounded-3 p-3 mb-4">
                         <h5 class="text-info mb-3"><i class="bi bi-people-fill me-1"></i> Parents</h5>
                         <div class="row g-3">
-                            <div class="col-md-6">
-                                <label for="pere_prenom" class="form-label fw-semibold">Prénom du père</label>
-                                <input type="text" class="form-control @error('pere_prenom') is-invalid @enderror"
-                                    id="pere_prenom" name="pere_prenom" value="{{ old('pere_prenom') }}"
-                                    placeholder="Prénom du père">
-                                @error('pere_prenom')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                            </div>
-                            <div class="col-md-6">
-                                <label for="mere_prenom" class="form-label fw-semibold">Prénom de la mère</label>
-                                <input type="text" class="form-control @error('mere_prenom') is-invalid @enderror"
-                                    id="mere_prenom" name="mere_prenom" value="{{ old('mere_prenom') }}"
-                                    placeholder="Prénom de la mère">
-                                @error('mere_prenom')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                            </div>
+                            <div class="col-md-4">
+    <label for="pere_prenom" class="form-label fw-semibold">Prénom du père</label>
+    <input type="text" class="form-control @error('pere_prenom') is-invalid @enderror"
+        id="pere_prenom" name="pere_prenom" value="{{ old('pere_prenom') }}"
+        placeholder="Prénom du père">
+    @error('pere_prenom')<div class="invalid-feedback">{{ $message }}</div>@enderror
+</div>
+
+<div class="col-md-4">
+    <label for="mere_prenom" class="form-label fw-semibold">Prénom de la mère</label>
+    <input type="text" class="form-control @error('mere_prenom') is-invalid @enderror"
+        id="mere_prenom" name="mere_prenom" value="{{ old('mere_prenom') }}"
+        placeholder="Prénom de la mère">
+    @error('mere_prenom')<div class="invalid-feedback">{{ $message }}</div>@enderror
+</div>
+
+<div class="col-md-4">
+    <label for="mere_nom" class="form-label fw-semibold">Nom de la mère</label>
+    <input type="text" class="form-control @error('mere_nom') is-invalid @enderror"
+        id="mere_nom" name="mere_nom" value="{{ old('mere_nom') }}"
+        placeholder="Nom de la mère">
+    @error('mere_nom')<div class="invalid-feedback">{{ $message }}</div>@enderror
+</div>
                         </div>
                     </div>
 

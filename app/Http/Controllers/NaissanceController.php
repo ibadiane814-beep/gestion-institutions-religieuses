@@ -32,7 +32,8 @@ class NaissanceController extends Controller
             'enfant_nom'     => 'required|string|max:255',
             'enfant_prenom'  => 'required|string|max:255',
             'date_naissance' => 'required|date|before_or_equal:today',
-            'pere_nom'       => 'nullable|string|max:255',
+           'pere_prenom'    => 'nullable|string|max:255',
+            'mere_prenom'    => 'nullable|string|max:255',
             'mere_nom'       => 'nullable|string|max:255',
             'lieu'           => 'nullable|string|max:255',
         ], [
